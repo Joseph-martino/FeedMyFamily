@@ -17,7 +17,7 @@ public class CategoryRecipe {
     private String name;
     @Column(name = "recipes")
     @ManyToMany
-    @JoinTable(name = "ingredientrecipe", joinColumns = @JoinColumn(name = "recipes"), inverseJoinColumns = @JoinColumn(name = "ingredientrecipes"))
+    @JoinTable(name = "categoryrecipe", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "ingredientrecipe_id"))
     private List<Recipe> recipes;
 
     public CategoryRecipe() {
