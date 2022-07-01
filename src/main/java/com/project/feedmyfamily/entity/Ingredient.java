@@ -1,14 +1,26 @@
 package com.project.feedmyfamily.entity;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
+@Entity
+@Table(name = "ingredient")
 public class Ingredient {
-
-   private Long id;
-
-   private String name;
-
-   private String type;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(name = "name")
+    @NotNull
+    @Size(max = 50)
+    private String name;
+    @Column(name = "type")
+    @NotNull
+    @Size(max = 50)
+    private String type;
+    @OneToMany
+    @JoinColumn(name = "ingredientrecipes")
     private List<IngredientRecipe> ingredientRecipes;
 
     public Ingredient() {

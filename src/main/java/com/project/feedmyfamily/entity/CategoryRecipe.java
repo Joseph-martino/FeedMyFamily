@@ -1,12 +1,23 @@
 package com.project.feedmyfamily.entity;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
+@Entity
+@Table(name = "categoryrecipe")
 public class CategoryRecipe {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Column(name = "name")
+    @NotNull
+    @Size(max = 50)
     private String name;
-
+    @Column(name = "recipes")
+    @ManyToMany
+    @JoinTable(name = "ingredientrecipe", joinColumns = @JoinColumn(name = "recipes"), inverseJoinColumns = @JoinColumn(name = "ingredientrecipes"))
     private List<Recipe> recipes;
 
     public CategoryRecipe() {
@@ -35,5 +46,5 @@ public class CategoryRecipe {
         this.name = name;
     }
 
-    
+
 }
