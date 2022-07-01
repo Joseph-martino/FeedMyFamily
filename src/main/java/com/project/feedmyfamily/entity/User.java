@@ -16,6 +16,13 @@ public class User {
 
     private List<Group> groups;
 
+    @OneToMany
+    private List<Recipe> recipes;
+
+    public User(){
+
+    }
+
     public User(long id, String lastName, String firstName, String email, List<Group> groups){
         this.id = id;
         this.lastName = lastName;
