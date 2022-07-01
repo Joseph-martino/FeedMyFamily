@@ -35,5 +35,4 @@ public class CategoryRecipe {
         this.name = name;
     }
 
-    
 }

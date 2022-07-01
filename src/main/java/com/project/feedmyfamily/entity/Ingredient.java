@@ -1,13 +1,14 @@
 package com.project.feedmyfamily.entity;
+
 import java.util.List;
 
 public class Ingredient {
 
-   private Long id;
+    private Long id;
 
-   private String name;
+    private String name;
 
-   private String type;
+    private String type;
 
     private List<IngredientRecipe> ingredientRecipes;
 
