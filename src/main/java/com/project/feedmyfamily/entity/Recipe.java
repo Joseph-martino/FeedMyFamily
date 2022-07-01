@@ -35,8 +35,7 @@ public class Recipe {
     private Difficulty difficulty;
     @ManyToMany(mappedBy = "recipes")
     private List<CategoryRecipe> categoryRecipe;
-    @OneToMany
-    @JoinColumn(name = "ingredientrecipe_id")
+    @OneToMany(mappedBy= "recipe")
     private List<IngredientRecipe> ingredientRecipes;
 
     public Recipe() {
