@@ -25,10 +25,12 @@ public class Recipe {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    @Column(name = "visibility")
     @Enumerated(EnumType.STRING)
     private Visibility visibility;
     @Column(name = "duration")
     private int Duration;
+    @Column(name = "difficulty")
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
     @ManyToMany(mappedBy = "recipes")
