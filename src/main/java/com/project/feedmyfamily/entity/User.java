@@ -3,16 +3,28 @@ package com.project.feedmyfamily.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-
+@Entity
+@Table(name="user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column
+    @NotNull
     private String lastName;
 
+    @Column
+    @NotNull
     private String firstName;
 
+    @Column
+    @NotNull
     private String email;
+
+
+    @OneToMany
 
     private List<Group> groups;
 
