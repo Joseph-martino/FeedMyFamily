@@ -1,4 +1,5 @@
 package com.project.feedmyfamily.entity;
+import java.util.List;
 
 public class Ingredient {
 

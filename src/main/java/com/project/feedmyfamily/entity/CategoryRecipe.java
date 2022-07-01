@@ -7,16 +7,16 @@ public class CategoryRecipe {
 
     private String name;
 
-    private List<Recipe> findByRecipe;
+    private List<Recipe> recipes;
 
     public CategoryRecipe() {
         super();
     }
 
-    public CategoryRecipe(Long id, String name, List<Recipe> findByRecipe) {
+    public CategoryRecipe(Long id, String name, List<Recipe> recipes) {
         this.id = id;
         this.name = name;
-        this.findByRecipe = findByRecipe;
+        this.recipes = recipes;
     }
 
     public Long getId() {
@@ -34,4 +34,6 @@ public class CategoryRecipe {
     public void setName(String name) {
         this.name = name;
     }
+
+    
 }
