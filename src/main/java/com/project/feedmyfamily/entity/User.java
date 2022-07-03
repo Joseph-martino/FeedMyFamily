@@ -11,29 +11,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column
+    @Column(name = "lastName", length = 255)
     @NotNull
     private String lastName;
 
-    @Column
+    @Column(name = "firstName", length = 255)
     @NotNull
     private String firstName;
 
-    @Column
+    @Column(name = "email", length = 255)
     @NotNull
     private String email;
 
-
     @OneToMany
+    private List<UserGroup> userGroups;
 
-    private List<Group> groups;
+//    @OneToMany
+//    private List<Recipe> recipes;
 
-    public User(long id, String lastName, String firstName, String email, List<Group> groups){
+    public User(){
+
+    }
+
+    public User(long id, String lastName, String firstName, String email, List<UserGroup> userGroups){
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
-        this.groups = groups;
+        this.userGroups = userGroups;
     }
 
     public long getId() {
@@ -68,11 +73,11 @@ public class User {
         this.email = email;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public List<UserGroup> getUserGroups() {
+        return this.userGroups;
     }
 
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    public void setUserGroups(List<UserGroup> userGroups) {
+        this.userGroups = userGroups;
     }
 }

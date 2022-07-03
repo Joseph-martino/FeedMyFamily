@@ -1,58 +1,84 @@
 package com.project.feedmyfamily.entity;
 
-public class UserGroup {
-    private long id;
-    private long idGroup;
-    private long idUser;
-    private int isAdmin;
-    private int isModerator;
+import javax.persistence.*;
 
-    public UserGroup(long id, long idGroup, long idUser, int isAdmin, int isModerator){
+@Entity
+@Table(name = "userGroup")
+public class UserGroup {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Group group;
+
+    @Column
+    private boolean isAdmin;
+
+    @Column
+    private boolean isModerator;
+
+    public UserGroup(){
+
+    }
+
+    public UserGroup(long id, User user, Group group, boolean isAdmin, boolean isModerator){
         this.id = id;
-        this.idGroup = idGroup;
-        this.idUser = idUser;
+        this.user = user;
+        this.group = group;
         this.isAdmin = isAdmin;
         this.isModerator = isModerator;
     }
 
-
     public long getId() {
+
         return id;
     }
 
     public void setId(long id) {
+
         this.id = id;
     }
 
-    public long getIdGroup() {
-        return idGroup;
+    public User getUser() {
+
+        return this.user;
     }
 
-    public void setIdGroup(long idGroup) {
-        this.idGroup = idGroup;
+    public void setUser(User user) {
+
+        this.user = user;
     }
 
-    public long getIdUser() {
-        return idUser;
+    public Group getGroup() {
+
+        return this.group;
     }
 
-    public void setIdUser(long idUser) {
-        this.idUser = idUser;
+    public void setGroup(Group group) {
+
+        this.group = group;
     }
 
-    public int getIsAdmin() {
-        return isAdmin;
+    public boolean getIsAdmin() {
+
+        return this.isAdmin;
     }
 
-    public void setIsAdmin(int isAdmin) {
+    public void setIsAdmin(boolean isAdmin) {
+
         this.isAdmin = isAdmin;
     }
 
-    public int getIsModerator() {
+    public boolean getIsModerator() {
+
         return isModerator;
     }
 
-    public void setIsModerator(int isModerator) {
+    public void setIsModerator(boolean isModerator) {
+
         this.isModerator = isModerator;
     }
 }
