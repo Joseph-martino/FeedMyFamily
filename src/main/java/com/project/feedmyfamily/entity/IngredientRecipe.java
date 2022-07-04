@@ -1,13 +1,22 @@
 package com.project.feedmyfamily.entity;
 
-import javax.persistence.EmbeddedId;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "ingredientrecipe")
 public class IngredientRecipe {
 
     @EmbeddedId
     private IngredientRecipeId id;
+    @ManyToOne
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
+    @ManyToOne
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
+    @Column(name = "quantity")
+    @NotNull
     private double quantity;
 
     public IngredientRecipe() {
