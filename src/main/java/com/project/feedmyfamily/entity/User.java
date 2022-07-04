@@ -3,25 +3,42 @@ package com.project.feedmyfamily.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-
+@Entity
+@Table(name="user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "lastName", length = 255)
+    @NotNull
     private String lastName;
 
+    @Column(name = "firstName", length = 255)
+    @NotNull
     private String firstName;
 
+    @Column(name = "email", length = 255)
+    @NotNull
     private String email;
 
-    private List<Group> groups;
+    @OneToMany
+    private List<UserGroup> userGroups;
 
-    public User(long id, String lastName, String firstName, String email, List<Group> groups){
+//    @OneToMany
+//    private List<Recipe> recipes;
+
+    public User(){
+
+    }
+
+    public User(long id, String lastName, String firstName, String email, List<UserGroup> userGroups){
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
-        this.groups = groups;
+        this.userGroups = userGroups;
     }
 
     public long getId() {
@@ -56,11 +73,11 @@ public class User {
         this.email = email;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public List<UserGroup> getUserGroups() {
+        return this.userGroups;
     }
 
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    public void setUserGroups(List<UserGroup> userGroups) {
+        this.userGroups = userGroups;
     }
 }

@@ -1,12 +1,16 @@
 package com.project.feedmyfamily.entity;
 
+import javax.persistence.*;
 import java.util.List;
 
+
 public class Recipe {
+
     private long id;
     private String name;
     private String description;
     private String instruction;
+
     private User user;
     private Visibility visibility;
     private int Duration;
