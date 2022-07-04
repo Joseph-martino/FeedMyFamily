@@ -26,8 +26,8 @@ public class User {
     @OneToMany
     private List<UserGroup> userGroups;
 
-//    @OneToMany
-//    private List<Recipe> recipes;
+    @OneToMany
+    private List<Recipe> recipes;
 
     public User(){
 
