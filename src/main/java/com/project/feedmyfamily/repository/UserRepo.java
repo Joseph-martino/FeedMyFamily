@@ -19,10 +19,11 @@ public interface UserRepo extends JpaRepository <User, Long> {
     @Query("select g from Group g left join UserGroup ug where ug.group.id =: idgroup and ug.user.id =: iduser")
     List<Group> findAllGroupByUser(@Param("idgroup")Long idgroup, @Param("iduser")Long iduser);
 
-    List<User> findByFirstNameAndLastName();
+    List<User> findByFirstNameAndLastName(String firstname, String lastname);
 
-    User findByEmail();
+    User findByEmail(String email);
 
-    List<Recipe> findByRecipes();
+    @Query("select r from Recipe r where r.user.id =: id")
+    List<Recipe> findAllRecipies(@Param("id")Long id);
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface GroupRepo extends JpaRepository<Group,Long> {
 
-    List<Group> findByName();
+    List<Group> findByName(String name);
 
     @Query("select u from User u left join UserGroup ug where ug.group.id =: id")
     List<User> findUserByGroup(@Param("id")Long id);

@@ -1,5 +1,6 @@
 package com.project.feedmyfamily.repository;
 
+import com.project.feedmyfamily.entity.CategoryRecipe;
 import com.project.feedmyfamily.entity.Recipe;
 import com.project.feedmyfamily.entity.Visibility;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,7 +19,7 @@ public interface RecipeRepo extends JpaRepository<Recipe,Long> {
     @Query("select r from Recipe r where r.user.id =: id")
     List<Recipe> findRecipesByUser(@Param("id")Long id);
 
-    List<Recipe> findRecipeByCategoryRecipe();
+    List<Recipe> findRecipeByCategoryRecipe(CategoryRecipe categoryRecipe);
 
     @Query("select r from Recipe r left join IngredientRecipe ir where ir.ingredient.name =: name")
     List<Recipe> findRecipesByIngredient(@Param("name")String name);
@@ -26,7 +27,7 @@ public interface RecipeRepo extends JpaRepository<Recipe,Long> {
     @Query("select r from Recipe r left join IngredientRecipe ir where ir.ingredient.name =: name and r.visibility = 'SHAREDGROUP' and r.visibility = 'SHAREDGLOBAL' ")
     List<Recipe> findRecipesByIngredientAndVisibility(@Param("name")String name, @Param("visibility")String visibility);
 
-    List<Recipe> findRecipesByDifficulty();
+    List<Recipe> findRecipesByDifficulty(String difficulty);
 
     @Query("select r from Recipe r where r.visibility = 'SHAREDGLOBAL' ")
     List<Recipe> findAllByVisibilityGlobal();
