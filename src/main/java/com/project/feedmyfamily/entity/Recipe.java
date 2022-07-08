@@ -20,13 +20,11 @@ public class Recipe {
     @JoinColumn(name = "user_id")
     private User user;
     @Column(name = "visibility", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Visibility visibility;
+    private String visibility;
     @Column(name = "duration")
     private int Duration;
     @Column(name = "difficulty")
-    @Enumerated(EnumType.STRING)
-    private Difficulty difficulty;
+    private String difficulty;
     @ManyToMany(mappedBy = "recipes")
     private List<CategoryRecipe> categoryRecipe;
     @OneToMany(mappedBy= "recipe")
@@ -35,7 +33,7 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(long id, String name, String description, String instruction, User user, Visibility visibility, int duration, Difficulty difficulty, List<CategoryRecipe> categoryRecipe, List<IngredientRecipe> ingredientRecipes) {
+    public Recipe(long id, String name, String description, String instruction, User user, String visibility, int duration, String difficulty, List<CategoryRecipe> categoryRecipe, List<IngredientRecipe> ingredientRecipes) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -47,6 +45,8 @@ public class Recipe {
         this.categoryRecipe = categoryRecipe;
         this.ingredientRecipes = ingredientRecipes;
     }
+
+
 
     public long getId() {
         return id;
@@ -88,13 +88,7 @@ public class Recipe {
         this.user = user;
     }
 
-    public Visibility getVisibility() {
-        return visibility;
-    }
 
-    public void setVisibility(Visibility visibility) {
-        this.visibility = visibility;
-    }
 
     public int getDuration() {
         return Duration;
@@ -104,11 +98,19 @@ public class Recipe {
         Duration = duration;
     }
 
-    public Difficulty getDifficulty() {
+    public String getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public String getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(Difficulty difficulty) {
+    public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
 

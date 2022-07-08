@@ -20,5 +20,15 @@ public interface RecipeRepo extends JpaRepository<Recipe,Long> {
 
     List<Recipe> findRecipeByCategoryRecipe();
 
-    
+    @Query("select r from Recipe r left join IngredientRecipe ir where ir.ingredient.name =: name")
+    List<Recipe> findRecipesByIngredient(@Param("name")String name);
+
+    @Query("select r from Recipe r left join IngredientRecipe ir where ir.ingredient.name =: name and r.visibility = 'SHAREDGROUP' and r.visibility = 'SHAREDGLOBAL' ")
+    List<Recipe> findRecipesByIngredientAndVisibility(@Param("name")String name, @Param("visibility")String visibility);
+
+    List<Recipe> findRecipesByDifficulty();
+
+    @Query("select r from Recipe r where r.visibility = 'SHAREDGLOBAL' ")
+    List<Recipe> findAllByVisibilityGlobal();
+
 }
