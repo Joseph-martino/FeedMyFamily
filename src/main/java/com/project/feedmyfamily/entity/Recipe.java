@@ -10,22 +10,16 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "name")
-    @Size(max = 45)
-    @NotNull
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
-    @Column(name = "description")
-    @Size(max = 100)
+    @Column(name = "description", length = 100)
     private String description;
-    @Column(name = "instruction")
-    @Size(max = 512)
-    @NotNull
+    @Column(name = "instruction", nullable = false, length = 512)
     private String instruction;
-    @Column(name = "user")
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @Column(name = "visibility")
+    @Column(name = "visibility", nullable = false)
     @Enumerated(EnumType.STRING)
     private Visibility visibility;
     @Column(name = "duration")

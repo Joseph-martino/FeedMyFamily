@@ -1,19 +1,20 @@
 package com.project.feedmyfamily.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name = "group")
+@Table(name = "teams")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "name", length = 255)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "group")
     private List<UserGroup> userGroups;
 
     public Group(){

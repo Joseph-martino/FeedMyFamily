@@ -10,8 +10,10 @@ public class UserGroup {
     private long id;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
+    @JoinColumn(name = "teams_id")
     private Group group;
 
     @Column

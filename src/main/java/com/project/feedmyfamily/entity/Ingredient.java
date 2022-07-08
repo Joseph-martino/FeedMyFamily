@@ -11,16 +11,11 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "name")
-    @NotNull
-    @Size(max = 50)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
-    @Column(name = "type")
-    @NotNull
-    @Size(max = 50)
+    @Column(name = "type", nullable = false, length = 50)
     private String type;
-    @OneToMany
-    @JoinColumn(name = "ingredientrecipes")
+    @OneToMany(mappedBy = "ingredient")
     private List<IngredientRecipe> ingredientRecipes;
 
     public Ingredient() {

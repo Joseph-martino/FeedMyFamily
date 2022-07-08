@@ -7,34 +7,34 @@ import javax.validation.constraints.NotNull;
 @Table(name = "ingredientrecipe")
 public class IngredientRecipe {
 
-    @EmbeddedId
-    private IngredientRecipeId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long Id;
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
-    @Column(name = "quantity")
-    @NotNull
+    @Column(name = "quantity", nullable = false)
     private double quantity;
 
     public IngredientRecipe() {
     }
 
-    public IngredientRecipe(IngredientRecipeId id, Ingredient ingredient, Recipe recipe, double quantity) {
-        this.id = id;
+    public IngredientRecipe(Long id, Ingredient ingredient, Recipe recipe, double quantity) {
+        Id = id;
         this.ingredient = ingredient;
         this.recipe = recipe;
         this.quantity = quantity;
     }
 
-    public IngredientRecipeId getId() {
-        return id;
+    public Long getId() {
+        return Id;
     }
 
-    public void setId(IngredientRecipeId id) {
-        this.id = id;
+    public void setId(Long id) {
+        Id = id;
     }
 
     public Ingredient getIngredient() {

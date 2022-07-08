@@ -11,13 +11,11 @@ public class CategoryRecipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "name")
-    @NotNull
-    @Size(max = 50)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "categoryrecipe", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "ingredientrecipe_id"))
+    @JoinTable(name = "recipehascategory", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "ingredientrecipe_id"))
     private List<Recipe> recipes;
 
     public CategoryRecipe() {

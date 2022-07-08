@@ -11,22 +11,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "lastName", length = 255)
-    @NotNull
+    @Column(name = "lastName", length = 255, nullable = false)
     private String lastName;
 
-    @Column(name = "firstName", length = 255)
-    @NotNull
+    @Column(name = "firstName", length = 255, nullable = false)
     private String firstName;
 
-    @Column(name = "email", length = 255)
-    @NotNull
+    @Column(name = "email", length = 255, nullable = false)
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<UserGroup> userGroups;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Recipe> recipes;
 
     public User(){
