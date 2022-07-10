@@ -1,7 +1,7 @@
 package com.project.feedmyfamily.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "ingredientrecipe")
