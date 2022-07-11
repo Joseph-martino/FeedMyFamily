@@ -24,6 +24,6 @@ public interface UserRepo extends JpaRepository <User, Long> {
     User findByEmail(String email);
 
     @Query("select r from Recipe r where r.user.id =: id")
-    List<Recipe> findAllRecipies(@Param("id")Long id);
+    List<Recipe> findAllUserRecipes(@Param("id")Long id);
 
 }

@@ -17,7 +17,7 @@ public interface RecipeRepo extends JpaRepository<Recipe,Long> {
     List<Recipe> findByVisibilityAndUser(@Param("visibility") Visibility visibility, @Param("id")Long id) ;
 
     @Query("select r from Recipe r where r.user.id =: id")
-    List<Recipe> findRecipesByUser(@Param("id")Long id);
+    List<Recipe> findRecipesByUserId(@Param("id")Long id);
 
     List<Recipe> findRecipeByCategoryRecipe(CategoryRecipe categoryRecipe);
 
