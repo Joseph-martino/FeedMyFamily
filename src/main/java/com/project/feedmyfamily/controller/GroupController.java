@@ -18,6 +18,11 @@ public class GroupController {
     @Autowired
     private GroupService groupService;
 
+    @GetMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Group findById(@PathVariable Long id){
+        return this.groupService.findById(id);
+    }
     @GetMapping("")
     @ResponseStatus(code = HttpStatus.OK)
     List<Group> findByName(String name) {
