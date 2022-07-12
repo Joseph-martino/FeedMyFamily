@@ -23,7 +23,7 @@ public class GroupController {
     public Group findById(@PathVariable Long id){
         return this.groupService.findById(id);
     }
-    @GetMapping("")
+    @GetMapping("/name")
     @ResponseStatus(code = HttpStatus.OK)
     List<Group> findByName(String name) {
 
