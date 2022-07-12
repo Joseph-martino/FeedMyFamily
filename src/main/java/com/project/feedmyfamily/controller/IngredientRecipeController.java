@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ingredientrecipes")
 public class IngredientRecipeController {
@@ -20,7 +22,11 @@ public class IngredientRecipeController {
 
     @GetMapping("/ingredients/recipes")
     @ResponseStatus(code = HttpStatus.OK)
-    IngredientRecipe findIngredientRecipeByIngredientAndRecipe(Ingredient ingredient, Recipe recipe) {
+    public IngredientRecipe findIngredientRecipeByIngredientAndRecipe(Ingredient ingredient, Recipe recipe) {
         return this.ingredientRecipeService.findIngredientRecipeByIngredientAndRecipe(ingredient,recipe);
+    }
+
+    public List<IngredientRecipe> findById(Long id) {
+        return this.findById(id);
     }
 }
