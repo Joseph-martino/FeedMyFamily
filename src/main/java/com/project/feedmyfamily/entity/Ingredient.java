@@ -20,6 +20,11 @@ public class Ingredient {
         super();
     }
 
+    public Ingredient(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
+
     public Ingredient(Long id, String name, String type, List<IngredientRecipe> ingredientRecipes) {
         this.id = id;
         this.name = name;

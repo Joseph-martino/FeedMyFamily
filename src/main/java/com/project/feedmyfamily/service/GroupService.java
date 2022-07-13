@@ -4,6 +4,7 @@ import com.project.feedmyfamily.entity.Group;
 import com.project.feedmyfamily.entity.Recipe;
 import com.project.feedmyfamily.entity.User;
 import com.project.feedmyfamily.repository.GroupRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,10 +17,11 @@ public class GroupService {
     public List<User> findByGroup;
     public List<User> findByAdminByGroup;
 
+    @Autowired
     private GroupRepo groupRepo;
 
-    public List<User> findByGroup(Group group) {
-        return this.groupRepo.findUserByGroup(group.getId());
+    public List<User> findByGroup(Long id) {
+        return this.groupRepo.findUserByGroup(id);
     }
 
     public List<User> findByAdminByGroup(Group group) {
@@ -34,7 +36,7 @@ public class GroupService {
         return this.groupRepo.findModeratorByGroup(group.getId());
     }
 
-    public List<Group> findByName(String name) {
+    public Group findByName(String name) {
         return this.groupRepo.findByName(name);
     }
 
@@ -46,5 +48,9 @@ public class GroupService {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Le groupe n'existe pas");
             }
         }
+
+    public List<Group> findAll() {
+        return this.groupRepo.findAll();
     }
+}
 

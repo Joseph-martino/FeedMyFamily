@@ -17,9 +17,9 @@ public class RecipeController {
     @Autowired
     private RecipeService recipeService;
 
-@GetMapping("/visibility/{id}")
+@GetMapping("/{visibility}/{id}")
 @ResponseStatus(code = HttpStatus.OK)
-    List<Recipe> findByVisibilityAndUser(@PathVariable Visibility visibility, @PathVariable Long id) {
+    List<Recipe> findByVisibilityAndUser(@PathVariable String visibility, @PathVariable Long id) {
         return this.recipeService.findByVisibilityAndUser(visibility,id);
     }
 

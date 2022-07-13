@@ -39,7 +39,7 @@ public class RecipeService {
         return this.recipeRepo.findAllByVisibilityGlobal();
     }
 
-    public List<Recipe> findByVisibilityAndUser(Visibility visibility, Long id) {
+    public List<Recipe> findByVisibilityAndUser(String visibility, Long id) {
         return this.recipeRepo.findByVisibilityAndUser(visibility,id);
     }
 

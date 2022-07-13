@@ -31,6 +31,16 @@ public class Recipe {
     public Recipe() {
     }
 
+    public Recipe(String name, String description, String instruction, User user, String visibility, int duration, String difficulty) {
+        this.name = name;
+        this.description = description;
+        this.instruction = instruction;
+        this.user = user;
+        this.visibility = visibility;
+        Duration = duration;
+        this.difficulty = difficulty;
+    }
+
     public Recipe(long id, String name, String description, String instruction, User user, String visibility, int duration, String difficulty, List<CategoryRecipe> categoryRecipe, List<IngredientRecipe> ingredientRecipes) {
         this.id = id;
         this.name = name;

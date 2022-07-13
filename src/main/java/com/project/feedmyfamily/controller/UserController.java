@@ -1,5 +1,6 @@
 package com.project.feedmyfamily.controller;
 
+import com.project.feedmyfamily.entity.Group;
 import com.project.feedmyfamily.entity.Recipe;
 import com.project.feedmyfamily.entity.User;
 import com.project.feedmyfamily.service.UserService;
@@ -38,6 +39,12 @@ public class UserController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<Recipe> findAllUserRecipes(@PathVariable Long id){
         return this.userService.findAllUserRecipes(id);
+    }
+
+    @GetMapping("/groups")
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Group> findAllGroupByUser(@RequestParam(name = "idUser") Long idUser, @RequestParam(name = "idGroup") Long idGroup){
+        return this.userService.findAllGroupByUser(idUser,idGroup);
     }
 
 

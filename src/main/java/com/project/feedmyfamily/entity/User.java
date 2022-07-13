@@ -29,6 +29,14 @@ public class User {
 
     }
 
+    public User(String lastName, String firstName, String email) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+    }
+
+
+
     public User(long id, String lastName, String firstName, String email, List<UserGroup> userGroups){
         this.id = id;
         this.lastName = lastName;

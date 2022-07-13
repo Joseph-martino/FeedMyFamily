@@ -1,5 +1,6 @@
 package com.project.feedmyfamily.service;
 
+import com.project.feedmyfamily.entity.Group;
 import com.project.feedmyfamily.entity.Recipe;
 import com.project.feedmyfamily.entity.User;
 import com.project.feedmyfamily.repository.UserRepo;
@@ -39,6 +40,7 @@ public class UserService {
     }
 
 
-
-
+    public List<Group> findAllGroupByUser(Long idUser, Long idGroup) {
+        return this.userRepo.findAllGroupByUser(idGroup,idUser);
+    }
 }

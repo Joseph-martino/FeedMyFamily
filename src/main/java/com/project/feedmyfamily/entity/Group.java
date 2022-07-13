@@ -10,7 +10,7 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "group")
@@ -18,6 +18,10 @@ public class Group {
 
     public Group(){
 
+    }
+
+    public Group(String name) {
+        this.name = name;
     }
 
     public Group(long id, String name, List<UserGroup> userGroups) {

@@ -26,6 +26,8 @@ public class UserGroup {
 
     }
 
+
+
     public UserGroup(long id, User user, Group group, boolean isAdmin, boolean isModerator){
         this.id = id;
         this.user = user;

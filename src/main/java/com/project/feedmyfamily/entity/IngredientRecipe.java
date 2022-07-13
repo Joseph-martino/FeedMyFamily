@@ -22,6 +22,12 @@ public class IngredientRecipe {
     public IngredientRecipe() {
     }
 
+    public IngredientRecipe(Ingredient ingredient, Recipe recipe, double quantity) {
+        this.ingredient = ingredient;
+        this.recipe = recipe;
+        this.quantity = quantity;
+    }
+
     public IngredientRecipe(Long id, Ingredient ingredient, Recipe recipe, double quantity) {
         Id = id;
         this.ingredient = ingredient;

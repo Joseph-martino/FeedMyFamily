@@ -20,14 +20,14 @@ public class IngredientRecipeService {
     @Autowired
     private IngredientRecipeRepo ingredientRecipeRepo;
 
-    public IngredientRecipe findIngredientRecipeByIngredientAndRecipe(@PathVariable Ingredient ingredient,@PathVariable Recipe recipe) {
+    public IngredientRecipe findIngredientRecipeByIngredientAndRecipe( Long ingredient, Long recipe) {
         return this.ingredientRecipeRepo.findIngredientRecipeByIngredientAndRecipe(ingredient,recipe);
     }
 
-    public List<IngredientRecipe> findById(Long id) {
+    public IngredientRecipe findById(Long id) {
         Optional<IngredientRecipe> optionalIngredientRecipe = this.ingredientRecipeRepo.findById(id);
         if(optionalIngredientRecipe.isPresent()){
-            return (List<IngredientRecipe>) optionalIngredientRecipe.get();
+            return optionalIngredientRecipe.get();
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "L'ingredient n'existe pas dans la recette");
         }
