@@ -19,13 +19,13 @@ public interface RecipeRepo extends JpaRepository<Recipe,Long> {
     @Query("select r from Recipe r where r.user.id =: id")
     List<Recipe> findRecipesByUserId(@Param("id")Long id);
 
-    @Query("select r from Recipe r left join CategoryRecipe cr where cr.id=:categoryRecipeId")
+    @Query("select r from Recipe r left join r.categoryRecipe cr where cr.id=:categoryRecipeId")
     List<Recipe> findRecipeByCategoryRecipeId(@Param("categoryRecipeId") Long categoryRecipeId);
 
-    @Query("select r from Recipe r left join IngredientRecipe ir where ir.ingredient.name =: name")
+    @Query("select r from Recipe r left join r.ingredientRecipes ir where ir.ingredient.name =: name")
     List<Recipe> findRecipesByIngredient(@Param("name")String name);
 
-    @Query("select r from Recipe r left join IngredientRecipe ir where ir.ingredient.name =: name and r.visibility = 'SHAREDGROUP' and r.visibility = 'SHAREDGLOBAL' ")
+    @Query("select r from Recipe r left join r.ingredientRecipes ir where ir.ingredient.name =: name and r.visibility = 'SHAREDGROUP' and r.visibility = 'SHAREDGLOBAL' ")
     List<Recipe> findRecipesByIngredientAndVisibility(@Param("name")String name, @Param("visibility")String visibility);
 
     List<Recipe> findRecipesByDifficulty(String difficulty);

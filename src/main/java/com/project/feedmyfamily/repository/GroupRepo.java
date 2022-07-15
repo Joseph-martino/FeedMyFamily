@@ -18,13 +18,13 @@ public interface GroupRepo extends JpaRepository<Group,Long> {
     @Query("select u from User u left join u.userGroups ug where ug.team.id=:idgroup")
     List<User> findUserByGroup(@Param("idgroup")Long idgroup);
 
-    @Query("select u from User u left join UserGroup ug where ug.team.id=:idgroup and ug.isAdmin=true")
+    @Query("select u from User u left join u.userGroups ug where ug.team.id=:idgroup and ug.isAdmin=true")
     List<User> findAdminByGroup(@Param("idgroup")Long idgroup);
 
-    @Query("select u from User u left join UserGroup ug where ug.team.id=:idgroup and ug.isModerator = true")
+    @Query("select u from User u left join u.userGroups ug where ug.team.id=:idgroup and ug.isModerator = true")
     List<User> findModeratorByGroup(@Param("idgroup")Long idgroup);
 
-    @Query("select r from Recipe r left join User u left join UserGroup ug where ug.team.id=:idgroup and (r.visibility = 'SHAREDGROUP' or r.visibility = 'SHAREDGLOBAL') ")
+    @Query("select r from Recipe r left join r.user u left join u.userGroups ug where ug.team.id=:idgroup and (r.visibility = 'SHAREDGROUP' or r.visibility = 'SHAREDGLOBAL') ")
     List<Recipe> findRecipesByGroup(@Param("idgroup")Long idgroup);
 
 }
