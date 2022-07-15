@@ -17,7 +17,7 @@ public class RecipeController {
     @Autowired
     private RecipeService recipeService;
 
-@GetMapping("/{visibility}/{id}")
+@GetMapping("/visibilityAndId/{visibility}/{id}")
 @ResponseStatus(code = HttpStatus.OK)
     List<Recipe> findByVisibilityAndUser(@PathVariable String visibility, @PathVariable Long id) {
         return this.recipeService.findByVisibilityAndUser(visibility,id);
@@ -28,13 +28,13 @@ public class RecipeController {
     List<Recipe> findRecipesByUserId(@PathVariable Long id) {
         return this.recipeService.findRecipesByUserId(id);
     }
-@GetMapping("/categoryrecipes")
+@GetMapping("/categoryRecipe/{categoryrecipes}")
 @ResponseStatus(code = HttpStatus.OK)
-    List<Recipe> findRecipeByCategoryRecipe(@PathVariable CategoryRecipe categoryRecipe) {
-        return this.recipeService.findRecipeByCategoryRecipe(categoryRecipe);
+    List<Recipe> findRecipeByCategoryRecipe(@PathVariable Long categoryRecipeId) {
+        return this.recipeService.findRecipeByCategoryRecipe(categoryRecipeId);
     }
 
-@GetMapping("/name")
+@GetMapping("/name/{name}")
 @ResponseStatus(code = HttpStatus.OK)
     List<Recipe> findRecipesByIngredient(@PathVariable String name) {
         return this.recipeService.findRecipesByIngredient(name);
@@ -45,7 +45,7 @@ public class RecipeController {
     List<Recipe> findRecipesByIngredientAndVisibility(@PathVariable String name, @PathVariable String visibility) {
         return this.recipeService.findRecipesByIngredientAndVisibility(name,visibility);
     }
-@GetMapping("/difficulty")
+@GetMapping("/difficulty/{difficulty}")
 @ResponseStatus(code = HttpStatus.OK)
     List<Recipe> findRecipesByDifficulty(@PathVariable String difficulty) {
         return this.recipeService.findRecipesByDifficulty(difficulty);

@@ -13,7 +13,7 @@ public class Group {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "team")
     private List<UserGroup> userGroups;
 
     public Group(){

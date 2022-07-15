@@ -47,8 +47,8 @@ public class RecipeService {
         return this.recipeRepo.findRecipesByUserId(id);
     }
 
-    public List<Recipe> findRecipeByCategoryRecipe(CategoryRecipe categoryRecipe) {
-        return this.recipeRepo.findRecipeByCategoryRecipe(categoryRecipe);
+    public List<Recipe> findRecipeByCategoryRecipe(Long categoryRecipeId) {
+        return this.recipeRepo.findRecipeByCategoryRecipeId(categoryRecipeId);
     }
 
     public List<Recipe> findRecipesByIngredient(String name) {

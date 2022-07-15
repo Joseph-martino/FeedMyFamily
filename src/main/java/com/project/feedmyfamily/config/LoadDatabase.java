@@ -35,14 +35,14 @@
 //			userGroup1.setGroup(groupe1);
 //			userGroup1.setUser(louis);
 //			UserGroup userGroup2 = new UserGroup();
-//			userGroup1.setGroup(groupe1);
-//			userGroup1.setUser(joseph);
+//			userGroup2.setGroup(groupe1);
+//			userGroup2.setUser(joseph);
 //			UserGroup userGroup3 = new UserGroup();
-//			userGroup1.setGroup(groupe2);
-//			userGroup1.setUser(quentin);
+//			userGroup3.setGroup(groupe2);
+//			userGroup3.setUser(quentin);
 //			UserGroup userGroup4 = new UserGroup();
-//			userGroup1.setGroup(groupe2);
-//			userGroup1.setUser(joseph);
+//			userGroup4.setGroup(groupe2);
+//			userGroup4.setUser(joseph);
 //
 //			// creation d'ingrédient
 //

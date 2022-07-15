@@ -84,4 +84,12 @@ public class User {
     public void setUserGroups(List<UserGroup> userGroups) {
         this.userGroups = userGroups;
     }
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+    }
 }

@@ -5,6 +5,7 @@ import com.project.feedmyfamily.entity.Recipe;
 import com.project.feedmyfamily.entity.User;
 import com.project.feedmyfamily.entity.UserGroup;
 import com.project.feedmyfamily.model.GroupModel;
+import com.project.feedmyfamily.model.UserModel;
 import com.project.feedmyfamily.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,15 +42,23 @@ public class GroupController {
         return resultat;
     }
 
-    @GetMapping("/group/{name}")
+    @GetMapping("/name/{name}")
     @ResponseStatus(code = HttpStatus.OK)
-    Group findByName(@PathVariable String name) {
-        return this.groupService.findByName(name.toLowerCase());
+    public GroupModel findByName(@PathVariable String name) {
+        Group g = this.groupService.findByName(name);
+        GroupModel resultat = new GroupModel(g);
+        return resultat;
     }
-    @GetMapping("/user/{group}")
+    @GetMapping("/user/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public List<User> findUserByGroup(@PathVariable Long id) {
-        return this.groupService.findByGroup(id);
+    public List<UserModel> findUserByGroup(@PathVariable Long id) {
+        List<User> u = this.groupService.findByGroup(id);
+        List<UserModel> resultat = new ArrayList<>();
+        for (User user: u
+             ) {
+            resultat.add(new UserModel(user));
+        }
+        return resultat;
     }
 
     @GetMapping("/admin/{group}")

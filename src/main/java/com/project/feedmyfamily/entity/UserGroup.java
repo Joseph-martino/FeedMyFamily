@@ -14,7 +14,7 @@ public class UserGroup {
     private User user;
     @ManyToOne
     @JoinColumn(name = "teams_id")
-    private Group group;
+    private Group team;
 
     @Column
     private boolean isAdmin;
@@ -31,7 +31,7 @@ public class UserGroup {
     public UserGroup(long id, User user, Group group, boolean isAdmin, boolean isModerator){
         this.id = id;
         this.user = user;
-        this.group = group;
+        this.team = group;
         this.isAdmin = isAdmin;
         this.isModerator = isModerator;
     }
@@ -56,14 +56,14 @@ public class UserGroup {
         this.user = user;
     }
 
-    public Group getGroup() {
+    public Group getTeam() {
 
-        return this.group;
+        return this.team;
     }
 
-    public void setGroup(Group group) {
+    public void setTeam(Group group) {
 
-        this.group = group;
+        this.team = group;
     }
 
     public boolean getIsAdmin() {
