@@ -40,7 +40,7 @@ public class UserService {
     }
 
 
-    public List<Group> findAllGroupByUser(Long idUser, Long idGroup) {
-        return this.userRepo.findAllGroupByUser(idGroup,idUser);
+    public List<Group> findAllGroupByUser(Long idUser) {
+        return this.userRepo.findAllGroupByUser(idUser);
     }
 }

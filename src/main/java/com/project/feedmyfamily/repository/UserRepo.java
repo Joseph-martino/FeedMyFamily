@@ -16,14 +16,14 @@ public interface UserRepo extends JpaRepository <User, Long> {
 
     List<User> findAll();
 
-    @Query("select g from Group g left join g.userGroups ug where ug.team.id =: idgroup and ug.user.id =: iduser")
-    List<Group> findAllGroupByUser(@Param("idgroup")Long idgroup, @Param("iduser")Long iduser);
+    @Query("select g from Group g left join g.userGroups ug where ug.user.id=:iduser")
+    List<Group> findAllGroupByUser(@Param("iduser")Long iduser);
 
     List<User> findByFirstNameAndLastName(String firstname, String lastname);
 
     User findByEmail(String email);
 
-    @Query("select r from Recipe r where r.user.id =: id")
+    @Query("select r from Recipe r where r.user.id=:id")
     List<Recipe> findAllUserRecipes(@Param("id")Long id);
 
 }

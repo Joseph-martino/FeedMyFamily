@@ -40,10 +40,10 @@ public class RecipeController {
         return this.recipeService.findRecipesByIngredient(name);
     }
 
-@GetMapping("/name/visibility")
+@GetMapping("/ingredient/{name}")
 @ResponseStatus(code = HttpStatus.OK)
-    List<Recipe> findRecipesByIngredientAndVisibility(@PathVariable String name, @PathVariable String visibility) {
-        return this.recipeService.findRecipesByIngredientAndVisibility(name,visibility);
+    List<Recipe> findRecipesByIngredientAndVisibility(@PathVariable String name) {
+        return this.recipeService.findRecipesByIngredientAndVisibility(name);
     }
 @GetMapping("/difficulty/{difficulty}")
 @ResponseStatus(code = HttpStatus.OK)

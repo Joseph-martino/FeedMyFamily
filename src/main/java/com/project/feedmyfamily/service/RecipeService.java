@@ -55,8 +55,8 @@ public class RecipeService {
         return this.recipeRepo.findRecipesByIngredient(name);
     }
 
-    public List<Recipe> findRecipesByIngredientAndVisibility(String name, String visibility) {
-        return this.recipeRepo.findRecipesByIngredientAndVisibility(name,visibility);
+    public List<Recipe> findRecipesByIngredientAndVisibility(String name) {
+        return this.recipeRepo.findRecipesByIngredientAndVisibility(name);
     }
 
     public List<Recipe> findRecipesByDifficulty(String difficulty) {

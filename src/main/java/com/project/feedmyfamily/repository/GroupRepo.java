@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface GroupRepo extends JpaRepository<Group,Long> {
 
-    @Query("select g from Group g where g.name = :name")
+    @Query("select g from Group g where g.name=:name")
     Group findByName(@Param("name") String name);
 
     @Query("select u from User u left join u.userGroups ug where ug.team.id=:idgroup")

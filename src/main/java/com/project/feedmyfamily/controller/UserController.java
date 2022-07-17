@@ -43,8 +43,8 @@ public class UserController {
 
     @GetMapping("/groups")
     @ResponseStatus(code = HttpStatus.OK)
-    public List<Group> findAllGroupByUser(@RequestParam(name = "idUser") Long idUser, @RequestParam(name = "idGroup") Long idGroup){
-        return this.userService.findAllGroupByUser(idUser,idGroup);
+    public List<Group> findAllGroupByUser(@RequestParam(name = "idUser") Long idUser){
+        return this.userService.findAllGroupByUser(idUser);
     }
 
 
