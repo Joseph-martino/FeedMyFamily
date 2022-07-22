@@ -3,6 +3,7 @@ package com.project.feedmyfamily.controller;
 import com.project.feedmyfamily.entity.CategoryRecipe;
 import com.project.feedmyfamily.entity.Recipe;
 import com.project.feedmyfamily.entity.Visibility;
+import com.project.feedmyfamily.model.RecipeModel;
 import com.project.feedmyfamily.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,5 +56,15 @@ public class RecipeController {
 @ResponseStatus(code = HttpStatus.OK)
     List<Recipe> findAllByVisibilityGlobal() {
         return this.recipeService.findAllByVisibilityGlobal();
+    }
+
+    @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Recipe create(@RequestBody Recipe recipe){
+       return this.recipeService.save(recipe);
+    }
+    @GetMapping("/group/{id}")
+    public List<RecipeModel> findAllRecipesByGroupId(@PathVariable Long id){
+        return this.recipeService.findAllRecipesByGroupId(id);
     }
 }

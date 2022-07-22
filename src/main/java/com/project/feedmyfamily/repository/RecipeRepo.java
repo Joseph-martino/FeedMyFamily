@@ -32,4 +32,7 @@ public interface RecipeRepo extends JpaRepository<Recipe,Long> {
     @Query("select r from Recipe r where r.visibility = 'SHAREDGLOBAL' ")
     List<Recipe> findAllByVisibilityGlobal();
 
+    @Query("select r from Recipe r left join r.user u left join u.userGroups ug where ug.team.id=:id")
+    List<Recipe> findAllRecipesByGroupId(Long id);
+
 }
