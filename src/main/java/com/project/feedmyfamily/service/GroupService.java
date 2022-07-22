@@ -52,5 +52,9 @@ public class GroupService {
     public List<Group> findAll() {
         return this.groupRepo.findAll();
     }
+
+    public void save(Group group) {
+        this.groupRepo.save(group);
+    }
 }
 

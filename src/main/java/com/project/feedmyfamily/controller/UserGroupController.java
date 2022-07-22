@@ -19,5 +19,10 @@ public class UserGroupController {
         return this.userGroupService.findById(id);
     }
 
+    @PostMapping("/create/{idgroup}/{iduser}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create (@PathVariable String idgroup, @PathVariable String iduser){
+        this.userGroupService.create(idgroup,iduser);
+    }
 
 }

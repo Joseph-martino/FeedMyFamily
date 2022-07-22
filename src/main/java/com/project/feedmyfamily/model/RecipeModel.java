@@ -12,6 +12,7 @@ public class RecipeModel {
 
     private  int duration;
     private String difficulty;
+    private Long userId;
 
 
     public RecipeModel(Recipe recipe){
@@ -22,6 +23,15 @@ public class RecipeModel {
         this.setVisibility(recipe.getVisibility());
         this.setDuration(recipe.getDuration());
         this.setDifficulty(recipe.getDifficulty());
+        this.setUserId(recipe.getUser().getId());
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getId() {

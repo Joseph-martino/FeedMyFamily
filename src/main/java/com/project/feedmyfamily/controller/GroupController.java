@@ -5,6 +5,7 @@ import com.project.feedmyfamily.entity.Recipe;
 import com.project.feedmyfamily.entity.User;
 import com.project.feedmyfamily.entity.UserGroup;
 import com.project.feedmyfamily.model.GroupModel;
+import com.project.feedmyfamily.model.RecipeModel;
 import com.project.feedmyfamily.model.UserModel;
 import com.project.feedmyfamily.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,13 +70,25 @@ public class GroupController {
 
     @GetMapping("/recipes/{group}")
     @ResponseStatus(code = HttpStatus.OK)
-    List<Recipe> findRecipesByGroup(@PathVariable Group group) {
-
-        return this.groupService.findRecipesByGroup(group);
+    List<RecipeModel> findRecipesByGroup(@PathVariable Group group) {
+        List<Recipe> recipes = this.groupService.findRecipesByGroup(group);
+        List<RecipeModel> resultats = new ArrayList<>();
+        for (Recipe recipe: recipes
+             ) {
+            resultats.add(new RecipeModel(recipe));
+        }
+        return resultats;
     }
     @GetMapping("/moderators/{group}")
     @ResponseStatus(code = HttpStatus.OK)
     List<User> findModeratorByGroup(@PathVariable Group group) {
         return this.groupService.findModeratorByGroup(group);
+    }
+
+
+    @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody Group group){
+        this.groupService.save(group);
     }
 }
