@@ -74,4 +74,14 @@ public class RecipeController {
     public List<RecipeModel> findAllRecipesByGroupId(@PathVariable Long id){
         return this.recipeService.findAllRecipesByGroupId(id);
     }
+
+    @GetMapping("")
+    public List<Recipe> findAll(){
+        return this.recipeService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Recipe findById(@PathVariable Long id){
+        return this.recipeService.findById(id);
+    }
 }
