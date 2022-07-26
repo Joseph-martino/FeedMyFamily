@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,11 +25,17 @@ public class RecipeController {
         return this.recipeService.findByVisibilityAndUser(visibility,id);
     }
 
-@GetMapping("/{id}")
+@GetMapping("/user/{id}")
 @ResponseStatus(code = HttpStatus.OK)
-    List<Recipe> findRecipesByUserId(@PathVariable Long id) {
-        return this.recipeService.findRecipesByUserId(id);
+    List<RecipeModel> findRecipesByUserId(@PathVariable Long id) {
+        List<Recipe> recipes = this.recipeService.findRecipesByUserId(id);
+        List<RecipeModel> resultat = new ArrayList<>();
+    for (Recipe recipe: recipes
+         ) {
+        resultat.add(new RecipeModel(recipe));
     }
+    return resultat;
+}
 @GetMapping("/categoryRecipe/{categoryrecipes}")
 @ResponseStatus(code = HttpStatus.OK)
     List<Recipe> findRecipeByCategoryRecipe(@PathVariable Long categoryRecipeId) {
